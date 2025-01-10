@@ -182,7 +182,7 @@ function App(){
           </option>
         ))}
       </select>
-      <div id="state-title">Name: {states[selectedStateIndex].name}</div>
+      <div id="state-title">{states[selectedStateIndex].name}</div>
       <div id="state-description">
         Description: {states[selectedStateIndex].description}
       </div>
