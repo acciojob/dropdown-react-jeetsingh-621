@@ -2,7 +2,8 @@ import React, { useState,useReducer } from "react";
 import "./../styles/App.css";
 
 
-const states = [{
+const states = [
+	{
 	name : "Madhya Pradesh",
 	description:"Madhya Pradesh, a large state in central India, retains landmarks from eras throughout Indian history.",
 	city :[{
@@ -33,7 +34,8 @@ const states = [{
 			description:"Little less known city Ajaypur.",
 		}]
 	}]
-},{
+},
+{
 	name : "Jharkhand",
 	description:"Jharkhand is a state in eastern India. It's known for its waterfalls, the elegant Jain temples of Parasnath Hill and the elephants and tigers of Betla National Park.",
 	city :[{
@@ -138,11 +140,84 @@ const states = [{
 }];
 
 
-function App() 
-{
-	// Do not alter/remove main div
+function App(){
+
+	const [selectedStateIndex, setSelectedStateIndex] = useState(0);
+	const [selectedCityIndex, setSelectedCityIndex] = useState(0);
+	const [selectedLandmarkIndex, setSelectedLandmarkIndex] = useState(0);
+
+
+
+	const handleStateChange = (e) => {
+		const index = parseInt(e.target.value, 10);
+		setSelectedStateIndex(index);
+		setSelectedCityIndex(0); // Reset city and landmark on state change
+		setSelectedLandmarkIndex(0);
+	  };
+
+	  const handleCityChange = (e) => {
+		const index = parseInt(e.target.value, 10);
+		setSelectedCityIndex(index);
+		setSelectedLandmarkIndex(0); // Reset landmark on city change
+	  };
+	
+	  const handleLandmarkChange = (e) => {
+		const index = parseInt(e.target.value, 10);
+		setSelectedLandmarkIndex(index);
+	  };
+
+	  const cities = states[selectedStateIndex]?.city || [];
+	  const landmarks = cities[selectedCityIndex]?.landmarks || [];
+
 	return (
 	<div id="main">
+  <h1>Dynamic Dropdowns</h1>
+
+      {/* State Dropdown */}
+      <label htmlFor="state">State:</label>
+      <select id="state" value={selectedStateIndex} onChange={handleStateChange}>
+        {states.map((state, index) => (
+          <option key={index} value={index}>
+            {state.name}
+          </option>
+        ))}
+      </select>
+      <div id="state-name">Name: {states[selectedStateIndex].name}</div>
+      <div id="state-description">
+        Description: {states[selectedStateIndex].description}
+      </div>
+
+      {/* City Dropdown */}
+      <label htmlFor="city">City:</label>
+      <select id="city" value={selectedCityIndex} onChange={handleCityChange}>
+        {cities.map((city, index) => (
+          <option key={index} value={index}>
+            {city.name}
+          </option>
+        ))}
+      </select>
+      <div id="city-name">Name: {cities[selectedCityIndex]?.name||"no cities available"}</div>
+      <div id="city-description">
+        Description: {cities[selectedCityIndex].description}
+      </div>
+
+      {/* Landmark Dropdown */}
+      <label htmlFor="landmark">Landmark:</label>
+      <select
+        id="landmark"
+        value={selectedLandmarkIndex}
+        onChange={handleLandmarkChange}
+      >
+        {landmarks.map((landmark, index) => (
+          <option key={index} value={index}>
+            {landmark.name}
+          </option>
+        ))}
+      </select>
+      <div id="landmark-name">Name: {landmarks[selectedLandmarkIndex]?.name||"no landmark available"}</div>
+      <div id="landmark-description">
+        Description: {landmarks[selectedLandmarkIndex]?.description||"no landmark available"}
+      </div>
 		
 	</div>
 	);
