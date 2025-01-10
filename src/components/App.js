@@ -196,7 +196,7 @@ function App(){
           </option>
         ))}
       </select>
-      <div id="city-name">Name: {cities[selectedCityIndex]?.name||"no cities available"}</div>
+      <div id="city-name">{cities[selectedCityIndex]?.name||"no cities available"}</div>
       <div id="city-description">
     {cities[selectedCityIndex].description}
       </div>
