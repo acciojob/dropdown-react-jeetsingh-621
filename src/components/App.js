@@ -184,7 +184,7 @@ function App(){
       </select>
       <div id="state-title">{states[selectedStateIndex].name}</div>
       <div id="state-description">
-        Description: {states[selectedStateIndex].description}
+     {states[selectedStateIndex].description}
       </div>
 
       {/* City Dropdown */}
@@ -198,7 +198,7 @@ function App(){
       </select>
       <div id="city-name">Name: {cities[selectedCityIndex]?.name||"no cities available"}</div>
       <div id="city-description">
-        Description: {cities[selectedCityIndex].description}
+    {cities[selectedCityIndex].description}
       </div>
 
       {/* Landmark Dropdown */}
@@ -214,9 +214,9 @@ function App(){
           </option>
         ))}
       </select>
-      <div id="landmark-name">Name: {landmarks[selectedLandmarkIndex]?.name||"no landmark available"}</div>
+      <div id="landmark-name">{landmarks[selectedLandmarkIndex]?.name||"no landmark available"}</div>
       <div id="landmark-description">
-        Description: {landmarks[selectedLandmarkIndex]?.description||"no landmark available"}
+     {landmarks[selectedLandmarkIndex]?.description||"no landmark available"}
       </div>
 		
 	</div>
