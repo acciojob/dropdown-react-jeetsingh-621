@@ -150,6 +150,7 @@ function App(){
 
 	const handleStateChange = (e) => {
 		const index = parseInt(e.target.value, 10);
+		// console.log(e.target);
 		setSelectedStateIndex(index);
 		setSelectedCityIndex(0); // Reset city and landmark on state change
 		setSelectedLandmarkIndex(0);
@@ -214,7 +215,7 @@ function App(){
           </option>
         ))}
       </select>
-      <div id="landmark-name">{landmarks[selectedLandmarkIndex]?.name||"no landmark available"}</div>
+      <div id="landmark-title">{landmarks[selectedLandmarkIndex]?.name||"no landmark available"}</div>
       <div id="landmark-description">
      {landmarks[selectedLandmarkIndex]?.description||"no landmark available"}
       </div>
