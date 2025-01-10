@@ -191,7 +191,7 @@ function App(){
       <label htmlFor="city">City:</label>
       <select id="city" value={selectedCityIndex} onChange={handleCityChange}>
         {cities.map((city, index) => (
-          <option key={index} value={index}>
+          <option id="city-title" key={index} value={index}>
             {city.name}
           </option>
         ))}
